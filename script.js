@@ -263,6 +263,71 @@ setTimeout(() => {
     }
 }, 7000);
 
+// Skill toggle functionality
+const skillToggles = document.querySelectorAll('.skill-toggle');
+
+skillToggles.forEach(toggle => {
+    toggle.addEventListener('click', function() {
+        const skillId = this.getAttribute('data-skill');
+        const details = document.getElementById(`${skillId}-details`);
+        const toggleText = this.querySelector('.toggle-text');
+        
+        // Toggle active class
+        this.classList.toggle('active');
+        details.classList.toggle('active');
+        
+        // Update button text
+        if (this.classList.contains('active')) {
+            toggleText.textContent = 'Hide Skills';
+        } else {
+            toggleText.textContent = 'Show Skills';
+        }
+    });
+});
+
+// Contact Form Handling
+const contactForm = document.getElementById('contactForm');
+const formStatus = document.getElementById('form-status');
+
+if (contactForm) {
+    contactForm.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        
+        const submitBtn = this.querySelector('.form-submit');
+        const submitText = submitBtn.querySelector('.submit-text');
+        const originalText = submitText.textContent;
+        
+        // Disable button and show loading state
+        submitBtn.disabled = true;
+        submitText.textContent = 'Sending...';
+        formStatus.style.display = 'none';
+        
+        try {
+            const response = await fetch(this.action, {
+                method: 'POST',
+                body: new FormData(this),
+                headers: {
+                    'Accept': 'application/json'
+                }
+            });
+            
+            if (response.ok) {
+                formStatus.className = 'form-status success';
+                formStatus.textContent = '✓ Message sent successfully! I\'ll get back to you soon.';
+                this.reset();
+            } else {
+                throw new Error('Form submission failed');
+            }
+        } catch (error) {
+            formStatus.className = 'form-status error';
+            formStatus.textContent = '✗ Oops! Something went wrong. Please try again or contact me directly via email.';
+        } finally {
+            submitBtn.disabled = false;
+            submitText.textContent = originalText;
+        }
+    });
+}
+
 // Prevent default link behavior for disabled links
 document.addEventListener('DOMContentLoaded', () => {
     console.log('🚀 Portfolio loaded successfully!');
