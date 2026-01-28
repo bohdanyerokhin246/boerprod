@@ -383,3 +383,55 @@ scrollTopBtn.addEventListener('mouseleave', () => {
     scrollTopBtn.style.transform = 'translateY(0)';
     scrollTopBtn.style.boxShadow = '0 4px 6px rgba(0, 0, 0, 0.1)';
 });
+
+// Gallery Toggle Functionality
+function toggleGallery(button) {
+    const gallery = button.nextElementSibling;
+    const toggleText = button.querySelector('.toggle-text');
+    
+    button.classList.toggle('active');
+    gallery.classList.toggle('active');
+    
+    if (button.classList.contains('active')) {
+        toggleText.textContent = 'Hide Screenshots';
+    } else {
+        toggleText.textContent = 'Project Screenshots';
+    }
+}
+
+// Image Modal Functionality
+function openModal(element) {
+    const modal = document.getElementById('imageModal');
+    const modalImg = document.getElementById('modalImage');
+    const modalCaption = document.getElementById('modalCaption');
+    
+    const img = element.querySelector('img');
+    modal.classList.add('show');
+    modalImg.src = img.src;
+    modalCaption.textContent = img.alt;
+    
+    // Prevent body scroll when modal is open
+    document.body.style.overflow = 'hidden';
+}
+
+function closeModal() {
+    const modal = document.getElementById('imageModal');
+    modal.classList.remove('show');
+    
+    // Restore body scroll
+    document.body.style.overflow = 'auto';
+}
+
+// Close modal when clicking outside the image
+document.getElementById('imageModal')?.addEventListener('click', function(e) {
+    if (e.target === this) {
+        closeModal();
+    }
+});
+
+// Close modal with Escape key
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+        closeModal();
+    }
+});

@@ -241,27 +241,69 @@
                 <div class="timeline-item">
                     <div class="timeline-marker"></div>
                     <div class="timeline-content">
-                        <div class="timeline-period">2021 - Present</div>
+                        <div class="timeline-period">4+ years</div>
                         <h3 class="timeline-title">Computer Systems Engineer</h3>
                         <h4 class="timeline-company">Kharkiv city polyclinic 6</h4>
                         <ul class="timeline-description">
                             <li>Administration and maintenance of medical information systems</li>
                             <li>Server infrastructure support (Windows Server, IIS)</li>
-                            <li>Configuration and support of Active Directory (AD DS), DNS, DHCP</li>
+                            <li>Configuration and support of AD DS, DNS, DHCP</li>
                             <li>Management of file servers and Hyper-V virtual machines</li>
                             <li>Developing and implementing enterprise <a href="https://new.6pol.city.kh.ua/" target="_blank" rel="noopener noreferrer">website for city polyclinic</a></li>
                         </ul>
+                        
+                        <!-- Project Screenshots -->
+                        <div class="project-gallery">
+                            <button class="gallery-toggle" onclick="toggleGallery(this)">
+                                <span class="toggle-text">Project Screenshots</span>
+                                <span class="toggle-icon">▼</span>
+                            </button>
+                            <div class="gallery-content">
+                                <div class="gallery-grid">
+                                <div class="gallery-item" onclick="openModal(this)">
+                                    <img src="img.png" alt="Polyclinic Website - Main Page" loading="lazy">
+                                    <div class="gallery-overlay">
+                                        <span class="gallery-icon">🔍</span>
+                                    </div>
+                                </div>
+                                <div class="gallery-item" onclick="openModal(this)">
+                                    <img src="img_1.png" alt="Polyclinic Website - Statistics Dashboard" loading="lazy">
+                                    <div class="gallery-overlay">
+                                        <span class="gallery-icon">🔍</span>
+                                    </div>
+                                </div>
+                                <div class="gallery-item" onclick="openModal(this)">
+                                    <img src="img_2.png" alt="Polyclinic Website - Equipment Management" loading="lazy">
+                                    <div class="gallery-overlay">
+                                        <span class="gallery-icon">🔍</span>
+                                    </div>
+                                </div>
+                                <div class="gallery-item" onclick="openModal(this)">
+                                    <img src="img_3.png" alt="Polyclinic Website - Equipment Details" loading="lazy">
+                                    <div class="gallery-overlay">
+                                        <span class="gallery-icon">🔍</span>
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                        
                         <div class="timeline-tags">
                             <span class="tag">System Administration</span>
                             <span class="tag">Server Management</span>
                             <span class="tag">Network Management</span>
+                            <span class="tag">Golang</span>
+                            <span class="tag">PostgreSQL</span>
+                            <span class="tag">REST API</span>
+                            <span class="tag">Docker</span>
+                            <span class="tag">Vue.js</span>
                         </div>
                     </div>
                 </div>
                 <div class="timeline-item">
                     <div class="timeline-marker"></div>
                     <div class="timeline-content">
-                        <div class="timeline-period">2025 - Present</div>
+                        <div class="timeline-period">10 months </div>
                         <h3 class="timeline-title">Golang Developer</h3>
                         <h4 class="timeline-company">Shore Scale</h4>
                         <ul class="timeline-description">
@@ -396,6 +438,13 @@
             <p class="footer-built">Built with ❤️ using HTML, CSS & JavaScript</p>
         </div>
     </footer>
+
+    <!-- Image Modal -->
+    <div id="imageModal" class="modal">
+        <span class="modal-close" onclick="closeModal()">&times;</span>
+        <img alt="" src="" class="modal-content" id="modalImage">
+        <div class="modal-caption" id="modalCaption"></div>
+    </div>
 
     <script src="script.js"></script>
 </body>
